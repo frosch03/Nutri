@@ -1,3 +1,5 @@
+{-# OPTIONS_HADDOCK prune, ignore-exports #-}
+
 module Food
     ( Food ()
     , Food.prot
@@ -16,17 +18,30 @@ import Macros hiding (prot, carb, fat)
 import Macros as M
 import Defaults
 
+-- | The Food data type consists of four things: 
+-- 
+-- * @foodname@ A name of the food. 
+-- 
+-- * @macros@   The macro nutrients of that specific food-item.
+-- 
+-- * @calories@ A calculated caloric value saved in kilo calories. 
+-- 
+-- * @amount@   The amount of the actual food. 
 data Food 
     = Food 
-      { foodname :: Name
+      { foodname :: Name 
       , macros :: Macros 
-      , calories :: Int
-      , amount :: Weight
+      , calories :: Int  
+      , amount :: Weight 
       } 
 
+-- | A simple operator so one can write the 'Weight' value prefix to
+-- the food.
 (.@) :: Weight -> (Weight -> Food) -> Food
 (.@) w f = f w 
 
+-- | kcal takes a food item and gives back the kilo-caloric
+-- value. This value is calculated from the macro-nutrition values.
 kcal :: Food -> Int
 kcal f 
     = round $ protkcal + carbkcal + fatkcal
@@ -35,6 +50,11 @@ kcal f
       carbkcal = kcalOfCarb * (Food.carb f)
       fatkcal  = kcalOfFat  * (Food.fat f)
 
+
+
+-- | This function is a "smart constructor" to construct a food
+-- item. If no 'Weight' is supplied, a food generating function for a
+-- specific food item is returned. 
 foodGenerator :: String -> (Protein, Carb, Fat) -> (Weight -> Food)
 foodGenerator s (p, c, f) w
     = Food
@@ -45,11 +65,16 @@ foodGenerator s (p, c, f) w
                + kcalOfFat  * f / 100.0 * inGramm w)
         w
 
+-- | The 'prot', 'carb' and 'fat' functions return the value of the
+-- macro-nutrients in gram's. 
 prot, carb, fat :: Food -> Float
 prot f = (inGramm.amount $ f) * (M.prot . macros $ f) / 100.0
 carb f = (inGramm.amount $ f) * (M.carb . macros $ f) / 100.0
 fat  f = (inGramm.amount $ f) * (M.fat  . macros $ f) / 100.0
 
+
+-- | 'Food' is an instance of the Show class, so it can be printed
+-- onto the screen.
 instance Show Food where
     show (Food n ms cals (Gramm a))
          = show (round a) ++ "g (" ++ show cals ++ " kcal) " ++ n ++ " (Prot: " ++ show (round $ M.prot ms) ++ "%, Carb: " 
@@ -61,6 +86,8 @@ instance Show Food where
 
 
                   
+-- | 'Food' is an instance of the Monoid class. That leads to the
+-- possibility of combining foods to meals together.
 instance Monoid Food where
     mempty 
         = Food "" (newMacros (0, 0, 0)) 0 (Gramm 0)
@@ -69,6 +96,8 @@ instance Monoid Food where
         = addFood f1 f2 
 
 
+-- | The 'addFood' function does the combination of two foods into
+-- another one.
 addFood :: Food -> Food -> Food
 addFood f1 f2
     = Food { foodname = foodname f1 ++ " and " ++ foodname f2 
