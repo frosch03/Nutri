@@ -1,6 +1,6 @@
 {-# OPTIONS_HADDOCK prune, ignore-exports #-}
 
-module Macros
+module Data.Nutrition.Macros
     ( 
       Macros ()
     , newMacros 

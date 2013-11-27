@@ -3,15 +3,15 @@
 -- | Nutri is actual something like the Main module. It shows a simple
 -- usage of the Nutri-library
 
-module Nutri
+module Data.Nutri
 where
 
 import Data.Monoid
 
-import Food   
-import Defaults
-import Weight
-import VariousFoods
+import Data.Nutrition.Food   
+import Data.Nutrition.Defaults
+import Data.Nutrition.Weight
+import Data.Nutrition.VariousFoods
 
 tag1 :: Food
 tag1 =    (Gramm 250) .@ schnitzelLutz 

@@ -1,6 +1,6 @@
 {-# OPTIONS_HADDOCK prune, ignore-exports #-}
 
-module Weight 
+module Data.Nutrition.Weight 
 where
 
 data Weight 

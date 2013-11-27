@@ -1,10 +1,10 @@
 {-# OPTIONS_HADDOCK prune, ignore-exports #-}
 
-module Food
+module Data.Nutrition.Food
     ( Food ()
-    , Food.prot
-    , Food.carb
-    , Food.fat
+    , Data.Nutrition.Food.prot
+    , Data.Nutrition.Food.carb
+    , Data.Nutrition.Food.fat
 
     , (.@)
 
@@ -13,10 +13,10 @@ module Food
 where
 
 import Data.Monoid
-import Weight
-import Macros hiding (prot, carb, fat)
-import Macros as M
-import Defaults
+import Data.Nutrition.Weight
+import Data.Nutrition.Macros hiding (prot, carb, fat)
+import Data.Nutrition.Macros as M
+import Data.Nutrition.Defaults
 
 -- | The Food data type consists of four things: 
 -- 
@@ -46,9 +46,9 @@ kcal :: Food -> Int
 kcal f 
     = round $ protkcal + carbkcal + fatkcal
     where 
-      protkcal = kcalOfProt * (Food.prot f)
-      carbkcal = kcalOfCarb * (Food.carb f)
-      fatkcal  = kcalOfFat  * (Food.fat f)
+      protkcal = kcalOfProt * (Data.Nutrition.Food.prot f)
+      carbkcal = kcalOfCarb * (Data.Nutrition.Food.carb f)
+      fatkcal  = kcalOfFat  * (Data.Nutrition.Food.fat f)
 
 
 
@@ -101,9 +101,9 @@ instance Monoid Food where
 addFood :: Food -> Food -> Food
 addFood f1 f2
     = Food { foodname = foodname f1 ++ " and " ++ foodname f2 
-           , macros = newMacros ( ((Food.prot f1) + (Food.prot f2)) / fact'
-                                , ((Food.carb f1) + (Food.carb f2)) / fact'
-                                , ((Food.fat  f1) + (Food.fat  f2)) / fact'
+           , macros = newMacros ( ((Data.Nutrition.Food.prot f1) + (Data.Nutrition.Food.prot f2)) / fact'
+                                , ((Data.Nutrition.Food.carb f1) + (Data.Nutrition.Food.carb f2)) / fact'
+                                , ((Data.Nutrition.Food.fat  f1) + (Data.Nutrition.Food.fat  f2)) / fact'
                                 )
            , calories = calories f1 + calories f2
            , amount = amount f1 + amount f2

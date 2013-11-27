@@ -5,13 +5,13 @@
 -- the amount of a specific food can be generated via: @(Gramm 150)
 -- .@ quark@.
 
-module VariousFoods
+module Data.Nutrition.VariousFoods
 
 where
 
-import Food   
-import Defaults
-import Weight
+import Data.Nutrition.Food   
+import Data.Nutrition.Defaults
+import Data.Nutrition.Weight
 
 -- | turkey-breast
 putenbrust :: Weight -> Food

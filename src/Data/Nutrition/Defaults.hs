@@ -1,7 +1,7 @@
 {-# OPTIONS_HADDOCK prune, ignore-exports #-}
 
 
-module Defaults
+module Data.Nutrition.Defaults
 where
 
 type Percent = Float
