@@ -24,3 +24,8 @@ tag2 =    (Gramm 500) .@ quark
        <> (Gramm 150) .@ haenchenstreifen
        <> (Gramm 380) .@ putenbrust
        <> (Gramm 100) .@ reis
+
+tag3 :: Food
+tag3 =    (Gramm 500) .@ quark
+       <> (Gramm 100) .@ wheyProtein
+       <> (Gramm 440) .@ subwayTurkyHam

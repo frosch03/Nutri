@@ -25,3 +25,5 @@ Macros
 
 The `Macros` type is a triple type, that contains the macro
 nutrients. Those are *Protein*, *Carbohydrate*s and *Fat*s. 
+
+

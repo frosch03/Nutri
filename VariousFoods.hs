@@ -13,7 +13,7 @@ import Food
 import Defaults
 import Weight
 
--- | Turkey-breast
+-- | turkey-breast
 putenbrust :: Weight -> Food
 putenbrust
     = foodGenerator
@@ -61,3 +61,70 @@ caesarSalat
     = foodGenerator
       "Caesar Salat"
       (4, 6, 9)
+
+wheyProtein :: Weight -> Food
+wheyProtein
+    = foodGenerator
+      "Eiweisdrink"
+      (80, 8, 4) -- TODO: correct? 
+
+risoniNudelsalat :: Weight -> Food
+risoniNudelsalat
+    = foodGenerator
+      "Risoni-Nudelsalat"
+      (8, 10, 7)
+
+mUndmMini :: Weight -> Food
+mUndmMini
+    = foodGenerator
+      "M&M Mini"
+      (9, 60, 25)
+      
+subwayTurkyHam :: Weight -> Food
+subwayTurkyHam
+    = foodGenerator
+      "Sub-Turky&Ham"
+      (10, 18, 3)
+
+subwayFajita :: Weight -> Food
+subwayFajita
+    = foodGenerator
+      "Sub-ChickenFajita"
+      (10, 19, 3)
+
+subwayChickenBreast :: Weight -> Food
+subwayChickenBreast
+    = foodGenerator
+      "Sub-ChickenBreast"
+      (10, 19, 5)
+
+subwayTeriyaki :: Weight -> Food
+subwayTeriyaki
+    = foodGenerator
+      "Sub-Teriyaki"
+      (9, 19, 3)
+
+subwayHam :: Weight -> Food
+subwayHam
+    = foodGenerator
+      "Sub-Ham"
+      (9, 20, 3)
+
+subwayTurky :: Weight -> Food
+subwayTurky
+    = foodGenerator
+      "Sub-Turky"
+      (10, 19, 3)
+
+subwayVeggi :: Weight -> Food
+subwayVeggi
+    = foodGenerator
+      "Sub-Veggi"
+      (6, 26, 4)
+
+subwayTurkyHamBacon :: Weight -> Food
+subwayTurkyHamBacon
+    = foodGenerator
+      "Sub-Turky&Ham&Bacon"
+      (12, 17, 3)
+
